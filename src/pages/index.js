@@ -5,6 +5,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import HeartIcon from 'react-icons/lib/fa/heart';
 import PaperIcon from 'react-icons/lib/fa/newspaper-o';
 import PlaneIcon from 'react-icons/lib/fa/plane';
+import { FeaturesSection } from '../components/FeaturesSection';
 
 const Hero = styled('div')({
   background: '#FFF',
@@ -27,13 +28,16 @@ const Image = styled('img')({
 const Container = styled('div')({
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center'
-})
+  alignItems: 'center',
+  padding: '3em'
+}, ({ backgroundColor }) => ({
+  backgroundColor: backgroundColor || '#FFF'
+}))
 
 const LargeHeader = styled('h1')({
   fontSize: '5em',
   fontWeight: '400',
-  padding: '0.5em'
+  paddingTop: '0.5em'
 });
 
 const SubHeader = styled('h2')({
@@ -44,51 +48,58 @@ const CenteredRow = styled(Row)({
   justifyContent: 'center'
 })
 
-const CenteredCol = styled(Col)({
+const Photos = styled('div')({
+  display: 'flex',
+  flexWrap: 'wrap',
   justifyContent: 'center',
-  textAlign: 'center'
+  alignItems: 'center'
 })
 
-const Features = styled(Row)({
-  maxWidth: '960px',
-  padding: '0.5em'
+const Photo = styled('img')({
+  margin: '2em',
+  boxShadow: '0 0 5px #666'
+})
+
+const FooterContainer = styled('div')({
+  backgroundColor: '#1B1C1D',
+  display: 'flex'
+});
+
+const FooterMessage = styled('p')({
+  paddingLeft: '2em',
+  color: '#FFF',
+  fontWeight: '100',
+  fontSize: '0.8em',
+  margin: '0.5em'
 })
 
 export default class IndexPage extends Component {
   render() {
     const banner = this.props.data.banner.edges.map(image => image.node.resize.src)[0];
+    const featuredPhotos = this.props.data.featuredPhotos.edges.map(image => image.node.resize.src);
+
     return (
       <div>
         <Hero>
           <Image src={banner}/>
         </Hero>
-        <Container>
-            <Grid fluid>
-              <CenteredRow>
-                <LargeHeader>Jake & Katrina</LargeHeader>
-              </CenteredRow>
-              <CenteredRow>
-                <SubHeader>on a journey through life together...</SubHeader>
-              </CenteredRow>
-              <Features>
-                <CenteredCol md={4}>
-                  <HeartIcon size={75} color='red' style={{margin: '1em'}}/>
-                  <h2>Photo Albums</h2>
-                  <p>From Easter in Albion to New Year’s in Copenhagen, take a peek at our life through photographs.</p>
-                </CenteredCol>
-                <CenteredCol md={4}>
-                  <PaperIcon size={75} style={{margin: '1em'}}/>
-                  <h2>Blog</h2>
-                  <p>We aren’t the Wall Street Journal, but we might post something interesting from time to time.</p>
-                </CenteredCol>
-                <CenteredCol md={4}>
-                  <PlaneIcon size={75} color="steelblue" style={{margin: '1em'}}/>
-                  <h2>Travel</h2>
-                  <p>Watch our mapped destinations expand as we attempt to explore the world one trip at a time.</p>
-                </CenteredCol>
-              </Features>
-            </Grid>
+        <FeaturesSection/>
+        <Container backgroundColor="#f0f0f0">
+          <Grid fluid>
+            <CenteredRow>
+              <LargeHeader>4</LargeHeader>
+            </CenteredRow>
+            <CenteredRow>
+              <SubHeader>years and counting...</SubHeader>
+            </CenteredRow>
+            <Row>
+              {featuredPhotos.map(photo => <Photo src={photo}/>)}
+            </Row>
+          </Grid>
         </Container>
+        <FooterContainer>
+          <FooterMessage>Made for Katrina, by Jake. Darling, you and I are Soulmates. ❤️</FooterMessage>
+        </FooterContainer>
       </div>
     )
   }
@@ -101,6 +112,17 @@ query IndexQuery {
       node {
         ... on ImageSharp {
           resize(width: 1440, height: 1080) {
+            src
+          }
+        }
+      }
+    }
+  }
+  featuredPhotos: allImageSharp(filter: { id: { regex: "/featured/" } }) { 
+    edges {
+      node {
+        ... on ImageSharp {
+          resize(width: 200, height: 300) {
             src
           }
         }
