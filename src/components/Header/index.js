@@ -1,20 +1,16 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-const Header = () => (
+const Header = ({logo}) => (
   <div
     style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
+      background: '0 0',
+      zIndex: '9',
+      position: 'relative',
+      backgroundColor: 'rgba(255, 255, 255, 0.9)'
     }}
   >
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
+    <div>
       <h1 style={{ margin: 0 }}>
         <Link
           to="/"
@@ -23,7 +19,7 @@ const Header = () => (
             textDecoration: 'none',
           }}
         >
-          Gatsby
+         <img style={{ margin: '0'}} src={logo}/>
         </Link>
       </h1>
     </div>
