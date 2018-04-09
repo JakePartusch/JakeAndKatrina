@@ -9,11 +9,7 @@ const typography = new Typography({
   googleFonts: [
     {
       name: 'Roboto',
-      styles: ['100', '400', '700'],
-    },
-    {
-      name: 'Noto Serif',
-      styles: ['400', '700'],
+      styles: ['100', '200', '300', '400', '700'],
     },
   ],
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
