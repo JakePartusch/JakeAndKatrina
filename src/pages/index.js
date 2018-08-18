@@ -60,19 +60,6 @@ const Photo = styled('img')({
   boxShadow: '0 0 5px #666'
 })
 
-const FooterContainer = styled('div')({
-  backgroundColor: '#1B1C1D',
-  display: 'flex'
-});
-
-const FooterMessage = styled('p')({
-  paddingLeft: '2em',
-  color: '#FFF',
-  fontWeight: '100',
-  fontSize: '0.8em',
-  margin: '0.5em'
-})
-
 export default class IndexPage extends Component {
   render() {
     const banner = this.props.data.banner.edges.map(image => image.node.resize.src)[0];
@@ -97,9 +84,6 @@ export default class IndexPage extends Component {
             </Row>
           </Grid>
         </Container>
-        <FooterContainer>
-          <FooterMessage>Made for Katrina, by Jake. Darling, you and I are Soulmates. ❤️</FooterMessage>
-        </FooterContainer>
       </div>
     )
   }
