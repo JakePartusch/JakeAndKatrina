@@ -87,7 +87,7 @@ export default class IndexPage extends Component {
         <Container backgroundColor="#f0f0f0">
           <Grid fluid>
             <CenteredRow>
-              <LargeHeader>4</LargeHeader>
+              <LargeHeader>5</LargeHeader>
             </CenteredRow>
             <CenteredRow>
               <SubHeader>years and counting...</SubHeader>
