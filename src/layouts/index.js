@@ -17,9 +17,7 @@ const TemplateWrapper = ({ children, data }) => {
       ]}
     />
     <Header logo={logo}/>
-    <div>
       {children()}
-    </div>
     <Footer />
   </div>
 )}
