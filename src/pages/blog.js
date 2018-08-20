@@ -71,7 +71,7 @@ export default class BlogPosts extends React.Component {
     return (
       <Container>
         {data.blogPosts.edges.map(blog => (
-          <Anchor href="#">
+          <Anchor href={`/blog/${blog.node.id}`}>
             <Blog>
               <CoverPhoto src={blog.node.coverPhoto.resolutions.src}></CoverPhoto>
               <Title>{blog.node.title}</Title>

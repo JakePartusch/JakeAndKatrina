@@ -15,7 +15,8 @@ const Container = styled('div')({
   position: 'relative',
   backgroundColor: 'rgba(255, 255, 255, 0.9)',
   display: 'flex',
-  height: '60px'
+  height: '60px',
+  overflowX: 'scroll'
 })
 
 const Header = ({logo}) => (
@@ -72,7 +73,7 @@ const Header = ({logo}) => (
           textDecoration: 'none',
         }}
       >
-        Trip Map
+        Map
       </a>
     </LargeHeader>
   </Container>
