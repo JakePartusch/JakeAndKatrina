@@ -2,14 +2,12 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'react-emotion'
 
-const Container = styled('div')({
+const BlogContainer = styled('div')({
   'display': 'flex',
   'flex-wrap': 'wrap',
   '-webkit-box-pack': 'start',
   'justify-content': 'center',
-  // maxWidth: '960px',
-  background: '#eee',
-  margin: 'auto'
+  background: '#eee'
 });
 
 const BlogEntry = styled('a')({
@@ -69,7 +67,7 @@ export default class BlogPosts extends React.Component {
     const { data } = this.props;
     
     return (
-      <Container>
+      <BlogContainer>
         {data.blogPosts.edges.map(blog => (
           <Anchor href={`/blog/${blog.node.id}`}>
             <Blog>
@@ -80,7 +78,7 @@ export default class BlogPosts extends React.Component {
             </Blog>
           </Anchor>
         ))}
-      </Container>
+      </BlogContainer>
     )
   }
 }

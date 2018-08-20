@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'react-emotion'
 
-const Container = styled('div')({
+const BlogPostContainer = styled('div')({
     display: 'flex',
     justifyContent: 'center',
     backgroundColor: '#eee'
@@ -40,7 +40,7 @@ export default class BlogPost extends React.Component {
     render() {
         const { blogPost } = this.props.data;
         return (
-            <Container>
+            <BlogPostContainer>
                 <Content>
                     <CoverPhoto src={blogPost.coverPhoto.resolutions.src}></CoverPhoto>
                     <LargeHeader>{blogPost.title}</LargeHeader>
@@ -51,7 +51,7 @@ export default class BlogPost extends React.Component {
                         }}>
                     </p>
                 </Content>
-            </Container>
+            </BlogPostContainer>
         )
     }
 }
