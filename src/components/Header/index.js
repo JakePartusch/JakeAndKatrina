@@ -2,12 +2,11 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'react-emotion'
 
-
 const LargeHeader = styled('h1')({
   fontSize: '1.5em',
   paddingLeft: '2em',
-  paddingTop: '0.6em'
-});
+  paddingTop: '0.6em',
+})
 
 const Container = styled('div')({
   background: '0 0',
@@ -16,10 +15,10 @@ const Container = styled('div')({
   backgroundColor: 'rgba(255, 255, 255, 0.9)',
   display: 'flex',
   height: '60px',
-  overflowX: 'scroll'
+  overflowX: 'scroll',
 })
 
-const Header = ({logo}) => (
+const Header = ({ logo }) => (
   <Container>
     <h1>
       <Link
@@ -29,7 +28,7 @@ const Header = ({logo}) => (
           textDecoration: 'none',
         }}
       >
-        <img style={{maxHeight: '60px'}} src={logo}/>
+        <img style={{ maxHeight: '60px' }} src={logo} />
       </Link>
     </h1>
     <LargeHeader>

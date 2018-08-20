@@ -6,21 +6,22 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 const TemplateWrapper = ({ children, data }) => {
-  const logo = data.logo.edges.map(image => image.node.resize.src)[0];
+  const logo = data.logo.edges.map(image => image.node.resize.src)[0]
   return (
-  <div>
-    <Helmet
-      title="Jake and Katrina"
-      meta={[
-        { name: 'description', content: 'A website about us :)' },
-        { name: 'keywords', content: 'blog, lifestyle' },
-      ]}
-    />
-    <Header logo={logo}/>
+    <div>
+      <Helmet
+        title="Jake and Katrina"
+        meta={[
+          { name: 'description', content: 'A website about us :)' },
+          { name: 'keywords', content: 'blog, lifestyle' },
+        ]}
+      />
+      <Header logo={logo} />
       {children()}
-    <Footer />
-  </div>
-)}
+      <Footer />
+    </div>
+  )
+}
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func,
@@ -29,16 +30,17 @@ TemplateWrapper.propTypes = {
 export default TemplateWrapper
 
 export const pageQuery = graphql`
-query MainQuery {
-  logo: allImageSharp(filter: { id: { regex: "/logo.png/" } }) { 
-    edges {
-      node {
-        ... on ImageSharp {
-          resize(width: 240, height: 100) {
-            src
+  query MainQuery {
+    logo: allImageSharp(filter: { id: { regex: "/logo.png/" } }) {
+      edges {
+        node {
+          ... on ImageSharp {
+            resize(width: 240, height: 100) {
+              src
+            }
           }
         }
       }
     }
   }
-}`
+`

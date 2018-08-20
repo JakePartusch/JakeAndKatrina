@@ -3,20 +3,20 @@ import Link from 'gatsby-link'
 import styled from 'react-emotion'
 
 const BlogContainer = styled('div')({
-  'display': 'flex',
+  display: 'flex',
   'flex-wrap': 'wrap',
   '-webkit-box-pack': 'start',
   'justify-content': 'center',
-  background: '#eee'
-});
+  background: '#eee',
+})
 
 const BlogEntry = styled('a')({
   color: 'inherit',
   width: '50%',
   'max-width': '100%',
   display: 'flex',
-  'text-decoration': 'none'
-});
+  'text-decoration': 'none',
+})
 
 const Blog = styled('article')({
   'background-color': 'white',
@@ -31,47 +31,45 @@ const Blog = styled('article')({
   transition: '225ms ease-in-out',
   outline: 'rgba(0, 0, 0, 0.15) solid 1px',
   padding: '1em',
-  maxWidth: '400px'
-});
+  maxWidth: '400px',
+})
 
 const Title = styled('h2')({
   'font-weight': '400',
-  margin: '0.5rem 0px'
+  margin: '0.5rem 0px',
 })
 
 const BlogDate = styled('h3')({
   'font-size': '16px',
   'text-transform': 'uppercase',
-  margin: '0px 0px 0.5rem'
+  margin: '0px 0px 0.5rem',
 })
 
 const Preview = styled('p')({
   'word-wrap': 'break-word',
-  'word-break': 'break-word'
+  'word-break': 'break-word',
 })
 
-const CoverPhoto = styled('img')({
-
-})
+const CoverPhoto = styled('img')({})
 
 const Anchor = styled('a')({
   '&:any-link': {
     textDecoration: 'none',
-    color: "hsla(0,0%,0%,0.8)"
-  }
+    color: 'hsla(0,0%,0%,0.8)',
+  },
 })
 
 export default class BlogPosts extends React.Component {
   render() {
-    console.log(this.props);
-    const { data } = this.props;
-    
+    console.log(this.props)
+    const { data } = this.props
+
     return (
       <BlogContainer>
         {data.blogPosts.edges.map(blog => (
           <Anchor href={`/blog/${blog.node.id}`}>
             <Blog>
-              <CoverPhoto src={blog.node.coverPhoto.resolutions.src}></CoverPhoto>
+              <CoverPhoto src={blog.node.coverPhoto.resolutions.src} />
               <Title>{blog.node.title}</Title>
               <BlogDate>{new Date(blog.node.date).toDateString()}</BlogDate>
               <Preview>{blog.node.body.childMarkdownRemark.excerpt}</Preview>
@@ -84,31 +82,32 @@ export default class BlogPosts extends React.Component {
 }
 
 export const pageQuery = graphql`
-query BlogPostsQuery {
-  blogPosts: allContentfulBlogPost {
-    edges {
-      node {
-        id
-        title
-        author {
-          name
-        }
-        date
-        body {
-          childMarkdownRemark {
-            html
-            excerpt
+  query BlogPostsQuery {
+    blogPosts: allContentfulBlogPost {
+      edges {
+        node {
+          id
+          title
+          author {
+            name
           }
-        }
-        coverPhoto {
-          resolutions(width: 600, height: 400) {
-            width
-            height
-            src
-            srcSet
+          date
+          body {
+            childMarkdownRemark {
+              html
+              excerpt
+            }
+          }
+          coverPhoto {
+            resolutions(width: 600, height: 400) {
+              width
+              height
+              src
+              srcSet
+            }
           }
         }
       }
     }
   }
-}`
+`
