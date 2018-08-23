@@ -63,10 +63,10 @@ export default class BlogPosts extends React.Component {
   render() {
     console.log(this.props)
     const { data } = this.props
-
+    const sortedBlogs = data.blogPosts.edges.sort(((a, b) => new Date(b.node.date) - new Date(a.node.date))) 
     return (
       <BlogContainer>
-        {data.blogPosts.edges.map(blog => (
+        {sortedBlogs.map(blog => (
           <Anchor to={`/blog/${blog.node.id}`}>
             <Blog>
               <CoverPhoto src={blog.node.coverPhoto.resolutions.src} />
