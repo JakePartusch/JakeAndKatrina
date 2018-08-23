@@ -34,6 +34,15 @@ const BlogDate = styled('h3')({
   margin: '0px 0px 0.5rem',
 })
 
+const BlogBody = styled('p')({
+  img: {
+    width: '250px',
+    height: '250px',
+    objectFit: 'cover',
+    marginBottom: '1.45rem',
+  },
+})
+
 export default class BlogPost extends React.Component {
   render() {
     const { blogPost } = this.props.data
@@ -44,7 +53,7 @@ export default class BlogPost extends React.Component {
           <LargeHeader>{blogPost.title}</LargeHeader>
           <Author>{`by: ${blogPost.author.name}`}</Author>
           <BlogDate>{new Date(blogPost.date).toDateString()}</BlogDate>
-          <p
+          <BlogBody
             dangerouslySetInnerHTML={{
               __html: blogPost.body.childMarkdownRemark.html,
             }}
