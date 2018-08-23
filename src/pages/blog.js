@@ -52,7 +52,7 @@ const Preview = styled('p')({
 
 const CoverPhoto = styled('img')({})
 
-const Anchor = styled('a')({
+const Anchor = styled(Link)({
   '&:any-link': {
     textDecoration: 'none',
     color: 'hsla(0,0%,0%,0.8)',
@@ -67,7 +67,7 @@ export default class BlogPosts extends React.Component {
     return (
       <BlogContainer>
         {data.blogPosts.edges.map(blog => (
-          <Anchor href={`/blog/${blog.node.id}`}>
+          <Anchor to={`/blog/${blog.node.id}`}>
             <Blog>
               <CoverPhoto src={blog.node.coverPhoto.resolutions.src} />
               <Title>{blog.node.title}</Title>
