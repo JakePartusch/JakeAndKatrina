@@ -1,5 +1,5 @@
-import Typography from 'typography';
-import { FONTS } from '../style';
+import Typography from 'typography'
+import { FONTS } from '../style'
 
 const typography = new Typography({
   baseFontSize: `${FONTS.size.base}px`,
@@ -15,6 +15,6 @@ const typography = new Typography({
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     // we can override any styles globally here
   }),
-});
+})
 
-export default typography;
+export default typography
